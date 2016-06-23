@@ -43,6 +43,8 @@ sensors:
     - group.humidity
     - group.luminance
     
+# View Groups
+# --------------------------------------------------
 light_bulbs: # 9 Light Bulbs
   entities:
     - group.dining_room
@@ -102,19 +104,6 @@ luminance: # 4 Light Sensors
     - sensor.kitchen_multi_luminance_3
     - sensor.master_multi_luminance_4
     - sensor.juliets_multi_luminance_5
-
-# Special
-# --------------------------------------------------
-occupants:
-  entities:
-    - device_tracker.dustin
-    - device_tracker.iphonedemacarena
-    
-weather:
-  entities:
-    - sensor.weather_indoor
-    - sensor.weather_outdoor
-    - sun.sun
 
 # Rooms
 # --------------------------------------------------
@@ -182,3 +171,11 @@ dining_room:
     - light.dining_room_2
     - light.dining_room_3
     - light.dining_room_4
+    
+# Weather
+# --------------------------------------------------
+weather:
+  entities:
+    - sensor.weather_indoor
+    - sensor.weather_outdoor
+    - sun.sun

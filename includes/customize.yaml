@@ -261,9 +261,6 @@ group.temperature:
 group.luminance:
   friendly_name: "Luminance"
   haaska_hidden: true
-group.occupants:
-  friendly_name: "Occupants"
-  haaska_hidden: true
 group.weather:
   friendly_name: "Temperature & Humidity"
   haaska_hidden: true

@@ -24,7 +24,6 @@ recorder:
   purge_days: 30
 sun:
   elevation: 50
-updater:
 
 # --------------------------------------------------
 # Includes
