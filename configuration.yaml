@@ -1,0 +1,44 @@
+#########################
+# Home Assistant
+#########################
+
+# --------------------------------------------------
+# Configuration
+# --------------------------------------------------
+homeassistant:
+  name: Home
+  latitude: !env_var LATITUDE
+  longitude: !env_var LONGITUDE
+  temperature_unit: C
+  time_zone: !env_var TZ
+  customize: !include includes/customize.yaml
+
+# --------------------------------------------------
+# Enables
+# --------------------------------------------------
+frontend:
+history:
+http:
+  api_password: !env_var HOME_PW
+recorder:
+  purge_days: 30
+sun:
+  elevation: 50
+updater:
+
+# --------------------------------------------------
+# Includes
+# --------------------------------------------------
+automation: !include includes/automations.yaml
+device_tracker: !include includes/device_trackers.yaml
+group: !include includes/groups.yaml
+input_boolean: !include includes/booleans.yaml
+light: !include includes/hue.yaml
+nest: !include includes/nest.yaml
+scene: !include includes/scenes.yaml
+script: !include includes/scripts.yaml
+sensor: !include includes/sensors.yaml
+shell_command: !include includes/commands.yaml
+switch: !include includes/switches.yaml
+wemo: !include includes/wemo.yaml
+zwave: !include includes/zwave.yaml

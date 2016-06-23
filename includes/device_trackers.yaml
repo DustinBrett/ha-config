@@ -1,0 +1,15 @@
+#########################
+# Device Trackers
+#########################
+
+# GPS (iCloud)
+- platform: icloud
+  username: !env_var MACA
+  password: !env_var ICLOUD_PW
+
+# WiFi (Netgear R7000)
+- platform: netgear
+  host: !env_var NETGEAR
+  username: !env_var NG_USER
+  password: !env_var NG_PW
+  track_new_devices: no

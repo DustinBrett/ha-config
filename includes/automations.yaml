@@ -1,0 +1,189 @@
+#########################
+# Automation
+#########################
+
+##################################################
+# Apartment
+##################################################
+
+# Turn off all lights & switches when Maca & Dustin are gone (Wait 5 minutes)
+- alias: 'Home Empty'
+  trigger:
+    platform: state
+    entity_id: group.all_devices
+    state: 'not_home'
+    for:
+      seconds: 300
+  action:
+    service: homeassistant.turn_off
+    entity_id: group.default_view
+
+# Turn on the entryway light when the front door opens
+- alias: 'Entry On/Off (Script)'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.entry_door_sensor_8
+    to: "on"
+  action:
+    service: homeassistant.turn_on
+    entity_id: script.timed_front_light
+    
+##################################################
+# Storage Room
+##################################################
+  
+# Turn on the storage room light when the storage door opens
+- alias: 'Storage On'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.storage_door_sensor_9
+    to: "on"
+  action:
+    service: switch.turn_on
+    data:
+      entity_id: switch.storage_room
+
+# Turn off the storage room light when the storage door closes
+- alias: 'Storage Off'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.storage_door_sensor_9
+    to: "off"
+  action:
+    service: switch.turn_off
+    data:
+      entity_id: switch.storage_room
+      
+##################################################
+# Kitchen
+##################################################
+    
+# Turn on the kitchen light if motion is detected & the lights were off & it's past sunset & it's 0.0 lux
+- alias: 'Kitchen On'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.kitchen_multi_sensor_3
+    to: "on"
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: switch.kitchen_main
+        state: "off"
+        for:
+          seconds: 10
+      - condition: sun
+        after: sunset
+      - condition: state
+        entity_id: sensor.kitchen_multi_luminance_3
+        state: "0.0"
+  action:
+    service: switch.turn_on
+    data:
+      entity_id: switch.kitchen_main
+
+##################################################
+# Bathrooms
+##################################################
+
+# Turn on the master bathroom lights if motion is detected & the lights weren't turned off recently
+- alias: 'Master Bathroom On'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.master_bathroom_motion_sensor_6
+    to: "on"
+  condition:
+    condition: state
+    entity_id: switch.master_bathroom
+    state: "off"
+    for:
+      seconds: 10
+  action:
+    service: switch.turn_on
+    data:
+      entity_id: switch.master_bathroom
+    
+# Turn off the master bathroom lights if no motion has been detected for 30 minutes
+- alias: 'Master Bathroom Off'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.master_bathroom_motion_sensor_6
+    to: "off"
+    for:
+      minutes: 30
+  action:
+    service: switch.turn_off
+    data:
+      entity_id: switch.master_bathroom
+
+# Turn on the guest bathroom lights if motion is detected & the lights weren't turned off recently
+- alias: 'Guest Bathroom On'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.guest_bathroom_motion_sensor_7
+    to: "on"
+  condition:
+    condition: state
+    entity_id: switch.guest_bathroom
+    state: "off"
+    for:
+      seconds: 10
+  action:
+    service: switch.turn_on
+    data:
+      entity_id: switch.guest_bathroom
+    
+# Turn off the guest bathroom lights if no motion has been detected for 20 minutes
+- alias: 'Guest Bathroom Off'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.guest_bathroom_motion_sensor_7
+    to: "off"
+    for:
+      minutes: 15
+  action:
+    service: switch.turn_off
+    data:
+      entity_id: switch.guest_bathroom
+      
+##################################################
+# Baby Monitor
+##################################################
+
+# Notify of motion in Juliet's room if "baby monitor" is enabled
+- alias: 'Motion Detected (Juliet)'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.juliets_multi_sensor_5
+    to: "on"
+  condition:
+    condition: state
+    entity_id: input_boolean.baby_monitor
+    state: "on"
+  action:
+    service: shell_command.motion_juliet
+    
+# Notify of "baby monitor" being enabled/disabled (2s delay)
+- alias: 'Motion Notification Off (Juliet)'
+  trigger:
+    platform: state
+    entity_id: input_boolean.baby_monitor
+  action:
+    - delay: 00:00:02
+    - service: shell_command.baby_monitor
+
+##################################################
+# Motion Detection
+##################################################
+
+- alias: 'Detect Motion'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.living_multi_sensor_2, binary_sensor.kitchen_multi_sensor_3, binary_sensor.master_multi_sensor_4, binary_sensor.juliets_multi_sensor_5, binary_sensor.master_bathroom_motion_sensor_6, binary_sensor.guest_bathroom_motion_sensor_7
+    to: "on"
+  condition:
+    condition: state
+    entity_id: input_boolean.detect_motion
+    state: "on"
+  action:
+    service: shell_command.motion_detected

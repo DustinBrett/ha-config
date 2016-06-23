@@ -1,0 +1,62 @@
+#########################
+# Sensors
+#########################
+
+# Nest Protect
+- platform: nest
+  monitored_conditions:
+    - 'co_status'
+    - 'smoke_status'
+
+# Forecast.io
+- platform: forecast
+  api_key: !env_var FORECAST
+  units: ca
+  monitored_conditions:
+    - temperature
+    - humidity
+    
+# Harmony Hub
+- platform: command_line
+  command: 'sudo node /home/pi/harmonyHubCLI/harmonyHubCli.js --hub 10.0.0.8 --read status | cut -d "\"" -f2'
+  name: 'Harmony Hub'
+  
+# Templates
+- platform: template
+  sensors:
+
+    avg_temperature: # Average Temperature
+      unit_of_measurement: '°C'
+      value_template: '{{ float((float(states.sensor.living_multi_temperature_2.state) + float(states.sensor.kitchen_multi_temperature_3.state) + float(states.sensor.master_multi_temperature_4.state) + float(states.sensor.juliets_multi_temperature_5.state)) / 4) | round(1) }}'
+      entity_id:
+        - sensor.living_multi_temperature_2
+        - sensor.kitchen_multi_temperature_3
+        - sensor.master_multi_temperature_4
+        - sensor.juliets_multi_temperature_5
+        
+    avg_humidity: # Average Humidity
+      unit_of_measurement: '%'
+      value_template: '{{ float((float(states.sensor.living_multi_relative_humidity_2.state) + float(states.sensor.kitchen_multi_relative_humidity_3.state) + float(states.sensor.master_multi_relative_humidity_4.state) + float(states.sensor.juliets_multi_relative_humidity_5.state)) / 4) | round(1) }}'
+      entity_id:
+        - sensor.living_multi_relative_humidity_2
+        - sensor.kitchen_multi_relative_humidity_3
+        - sensor.master_multi_relative_humidity_4
+        - sensor.juliets_multi_relative_humidity_5
+        
+    weather_indoor: # Average Temperature & Humidity (Indoors)
+      value_template: '{{ states.sensor.avg_temperature.state ~ " °C (" ~ states.sensor.avg_humidity.state ~ " %)" }}'
+      entity_id:
+        - sensor.avg_temperature
+        - sensor.avg_humidity
+        
+    weather_outdoor: # Temperature & Humidity (Outdoors)
+      value_template: '{{ states.sensor.weather_temperature.state ~ " °C (" ~ states.sensor.weather_humidity.state ~ " %)" }}'
+      entity_id:
+        - sensor.weather_temperature
+        - sensor.weather_humidity
+        
+    smoke_detector: # CO2 & Smoke Detector
+      value_template: '{{ states.sensor.hallway_co_status.state ~ " / " ~ states.sensor.hallway_smoke_status.state }}'
+      entity_id:
+        - sensor.hallway_co_status
+        - sensor.hallway_smoke_status

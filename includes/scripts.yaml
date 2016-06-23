@@ -1,0 +1,24 @@
+#########################
+# Scripts
+#########################
+
+# Reset 90 second timer and turn lights on
+timed_front_light:
+  sequence:
+    - service: script.turn_off
+      data:
+         entity_id: script.timed_front_light_off
+    - service: switch.turn_on
+      data:
+        entity_id: switch.front_door
+    - service: script.turn_on
+      data:
+        entity_id: script.timed_front_light_off
+
+# Turn lights off after 90 seconds
+timed_front_light_off:
+  sequence:
+    - delay: 00:01:30
+    - service: switch.turn_off
+      data:
+        entity_id: switch.front_door

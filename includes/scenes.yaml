@@ -1,0 +1,18 @@
+#########################
+# Scenes
+#########################
+
+# "Bed Time" - apartment off, master bedroom to lowest brightness
+- name: Bed Time
+  entities:
+    group.living_room: off
+    group.dining_room: off
+    group.kitchen: off
+    group.juliets_bedroom: off
+    group.master_bathroom: off    
+    group.guest_bathroom: off
+    group.entryway: off
+    group.storage_room: off
+    group.master_bedroom:
+      state: on
+      brightness: 1

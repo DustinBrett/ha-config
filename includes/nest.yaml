@@ -1,0 +1,6 @@
+#########################
+# Nest
+#########################
+
+username: !env_var DUSTIN
+password: !env_var NEST_PW

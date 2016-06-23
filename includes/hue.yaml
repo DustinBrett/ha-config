@@ -1,0 +1,7 @@
+#########################
+# Philips Hue
+#########################
+
+platform: hue
+host: !env_var HUE
+allow_unreachable: true

@@ -1,0 +1,22 @@
+#########################
+# Shell Commands
+#########################
+
+# WAV: Motion detected in Juliet's room.
+motion_juliet: 'sudo /usr/bin/aplay /home/pi/.homeassistant/audio/motion_juliet.wav'
+
+# WAV: Baby monitor enabled/disabled.
+baby_monitor: 'sudo /usr/bin/aplay /home/pi/.homeassistant/audio/baby_monitor_{{ states.input_boolean.baby_monitor.state }}.wav'
+
+# Media Center Off
+media_center_off: 'sudo node /home/pi/harmonyHubCLI/harmonyHubCli.js --hub 10.0.0.8 --activity "PowerOff"'
+
+# Activity: Watch Nexus
+watch_nexus: 'sudo node /home/pi/harmonyHubCLI/harmonyHubCli.js --hub 10.0.0.8 --activity "Watch Nexus"'
+
+# Activity: Play Xbox One
+play_xbox_one: 'sudo node /home/pi/harmonyHubCLI/harmonyHubCli.js --hub 10.0.0.8 --activity "Play XBox One"'
+
+# Motion Detected
+# TODO: Fix this and make it more generic
+motion_detected: 'sudo python3 /home/pi/gTTS/bin/gtts-cli.py "Motion detected in {% if trigger.entity_id == "binary_sensor.living_multi_sensor_2" %}Living Room{% elif trigger.entity_id == "binary_sensor.kitchen_multi_sensor_3" %}Kitchen{% elif trigger.entity_id == "binary_sensor.master_multi_sensor_4" %}Master Bedroom{% elif trigger.entity_id == "binary_sensor.juliets_multi_sensor_5" %}Juliets Bedroom{% elif trigger.entity_id == "binary_sensor.master_bathroom_motion_sensor_6" %}Master Bathroom{% elif trigger.entity_id == "binary_sensor.guest_bathroom_motion_sensor_7" %}Master Bedroom{% else %}Unknown Location{% endif %}." -l "en" -o speak.mp3 | sudo mplayer -ao alsa speak.mp3'

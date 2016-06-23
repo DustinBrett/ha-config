@@ -1,0 +1,7 @@
+#########################
+# Z-Wave
+#########################
+
+usb_path: !env_var ZWAVE
+config_path: !env_var ZWAVE_CONF
+polling_interval: 30000

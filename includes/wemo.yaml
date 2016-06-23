@@ -1,0 +1,12 @@
+#########################
+# Belkin WeMo
+#########################
+
+static:
+  - 10.0.0.5  # Guest Bathroom
+  - 10.0.0.6  # Storage Room
+  - 10.0.0.9  # Master Bathroom
+  - 10.0.0.10 # Kitchen Main
+  - 10.0.0.13 # Kitchen Plug
+  - 10.0.0.16 # Kitchen Counter
+  - 10.0.0.18 # Front Door
