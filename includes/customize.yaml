@@ -2,313 +2,282 @@
 # Customize
 #########################
 
-# Weather
-# --------------------------------------------------
-sensor.weather_indoor:
-  friendly_name: "Indoor"
-  icon: mdi:thermometer-lines
-sensor.weather_outdoor:
-  friendly_name: "Outdoor"
-  icon: mdi:thermometer-lines
-
-# Averages
-# --------------------------------------------------
+# Weather (Indoor / Outdoor)
+# ==============================
 sensor.avg_temperature:
-  friendly_name: 'Temperature (Average)'
+  friendly_name: "Average Temperature (°C)"
+  icon: mdi:thermometer
 sensor.avg_humidity:
-  friendly_name: 'Humidity (Average)'
+  friendly_name: "Average Humidity (%)"
   icon: mdi:water-percent
-  
-# Livingroom (Multi Sensor) (Aeotec)
-# --------------------------------------------------
-binary_sensor.living_multi_sensor_2:
-  friendly_name: "Living Room (Motion)"
-sensor.living_multi_luminance_2:
-  friendly_name: "Living Room (Luminance)"
-  icon: mdi:white-balance-sunny
-sensor.living_multi_relative_humidity_2:
-  friendly_name: "Living Room (Humidity)"
+sensor.temperature:
+  friendly_name: "Temperature (In / Out)"
+  icon: mdi:thermometer
+sensor.humidity:
+  friendly_name: "Humidity (In / Out)"
   icon: mdi:water-percent
-sensor.living_multi_temperature_2:
-  friendly_name: "Living Room (Temperature)"
-sensor.living_multi_ultraviolet_2:
-  hidden: true
-sensor.living_multi_alarm_level_2:
-  hidden: true
-sensor.living_multi_alarm_type_2:
-  hidden: true
-sensor.living_multi_burglar_2:
-  hidden: true
-sensor.living_multi_sourcenodeid_2:
-  hidden: true
+# ==============================
 
-# Kitchen (Multi Sensor) (Aeotec)
-# --------------------------------------------------
-binary_sensor.kitchen_multi_sensor_3:
-  friendly_name: "Kitchen (Motion)"
-sensor.kitchen_multi_luminance_3:
-  friendly_name: "Kitchen (Luminance)"
-  icon: mdi:white-balance-sunny
-sensor.kitchen_multi_relative_humidity_3:
-  friendly_name: "Kitchen (Humidity)"
-  icon: mdi:water-percent
-sensor.kitchen_multi_temperature_3:
-  friendly_name: "Kitchen (Temperature)"
-sensor.kitchen_multi_ultraviolet_3:
-  hidden: true
-sensor.kitchen_multi_alarm_level_3:
-  hidden: true
-sensor.kitchen_multi_alarm_type_3:
-  hidden: true
-sensor.kitchen_multi_burglar_3:
-  hidden: true
-sensor.kitchen_multi_sourcenodeid_3:
-  hidden: true
-
-# Master Bedroom (Multi Sensor) (Aeotec)
-# --------------------------------------------------
-binary_sensor.master_multi_sensor_4:
-  friendly_name: "Master Bedroom (Motion)"
-sensor.master_multi_luminance_4:
-  friendly_name: "Master Bedroom (Luminance)"
-  icon: mdi:white-balance-sunny
-sensor.master_multi_relative_humidity_4:
-  friendly_name: "Master Bedroom (Humidity)"
-  icon: mdi:water-percent
-sensor.master_multi_temperature_4:
-  friendly_name: "Master Bedroom (Temperature)"
-sensor.master_multi_ultraviolet_4:
-  hidden: true
-sensor.master_multi_alarm_level_4:
-  hidden: true
-sensor.master_multi_alarm_type_4:
-  hidden: true
-sensor.master_multi_burglar_4:
-  hidden: true
-sensor.master_multi_sourcenodeid_4:
-  hidden: true
-
-# Juliet's Bedroom (Multi Sensor) (Aeotec)
-# --------------------------------------------------
-binary_sensor.juliets_multi_sensor_5:
-  friendly_name: "Juliet's Bedroom (Motion)"
-sensor.juliets_multi_luminance_5:
-  friendly_name: "Juliet's Bedroom (Luminance)"
-  icon: mdi:white-balance-sunny
-sensor.juliets_multi_relative_humidity_5:
-  friendly_name: "Juliet's Bedroom (Humidity)"
-  icon: mdi:water-percent
-sensor.juliets_multi_temperature_5:
-  friendly_name: "Juliet's Bedroom (Temperature)"
-sensor.juliets_multi_ultraviolet_5:
-  hidden: true
-sensor.juliets_multi_alarm_level_5:
-  hidden: true
-sensor.juliets_multi_alarm_type_5:
-  hidden: true
-sensor.juliets_multi_burglar_5:
-  hidden: true
-sensor.juliets_multi_sourcenodeid_5:
-  hidden: true
-
-# Master Bathroom (Motion)
-# --------------------------------------------------
-binary_sensor.master_bathroom_motion_sensor_6:
-  friendly_name: "Master Bathroom (Motion)"
-sensor.master_bathroom_motion_alarm_level_6:
-  hidden: true
-sensor.master_bathroom_motion_alarm_type_6:
-  hidden: true
-sensor.master_bathroom_motion_burglar_6:
-  hidden: true
-sensor.master_bathroom_motion_sourcenodeid_6:
-  hidden: true
-  
-# Guest Bathroom (Motion)
-# --------------------------------------------------
-binary_sensor.guest_bathroom_motion_sensor_7:
-  friendly_name: "Guest Bathroom (Motion)"
-sensor.guest_bathroom_motion_alarm_level_7:
-  hidden: true
-sensor.guest_bathroom_motion_alarm_type_7:
-  hidden: true
-sensor.guest_bathroom_motion_burglar_7:
-  hidden: true
-sensor.guest_bathroom_motion_sourcenodeid_7:
-  hidden: true
-  
-# Entry (Open/Close)
-# --------------------------------------------------
-binary_sensor.entry_door_sensor_8:
-  friendly_name: "Entryway (Open/Close)"
-sensor.entry_door_alarm_level_8:
-  hidden: true
-sensor.entry_door_alarm_type_8:
-  hidden: true
-sensor.entry_door_burglar_8:
-  hidden: true
-sensor.entry_door_sourcenodeid_8:
-  hidden: true
-
-# Storage Room (Open/Close)
-# --------------------------------------------------
-binary_sensor.storage_door_sensor_9:
-  friendly_name: "Storage Room (Open/Close)"
-sensor.storage_door_alarm_level_9:
-  hidden: true
-sensor.storage_door_alarm_type_9:
-  hidden: true
-sensor.storage_door_burglar_9:
-  hidden: true
-sensor.storage_door_sourcenodeid_9:
-  hidden: true
-  
 # Hallway (Nest Protect)
-# --------------------------------------------------
+# ==============================
 sensor.smoke_detector:
   friendly_name: "Smoke Detector (CO2 / Smoke)"
   icon: mdi:nest-protect
-sensor.hallway_co_status:
+sensor.hallway_nest_protect_co_status:
   friendly_name: "CO2 Status"
   icon: mdi:nest-protect
-sensor.hallway_smoke_status:
+sensor.hallway_nest_protect_smoke_status:
   friendly_name: "Smoke Status"
   icon: mdi:nest-protect
+# ==============================
 
-# Switches (WeMo)
+# TV's (Logitech Harmony Hub)
+# ==============================
+switch.living_tv:
+  friendly_name: "Living Room (TV)"
+  icon: mdi:television
+  emulated_hue: true
+switch.master_bedroom_tv:
+  friendly_name: "Master Bedroom (TV)"
+  icon: mdi:television
+  emulated_hue: true
+# ==============================
+
+# Multi Sensors (Aeotec)
+# ==============================
+
+# Livingroom (Multi Sensor) (Aeotec)
 # --------------------------------------------------
-switch.tv:
-  friendly_name: "TV"
-  icon: mdi:television-guide
-switch.xbox:
-  friendly_name: "XBox One"
-  icon: mdi:xbox
+binary_sensor.living_multi_sensor_2_0:
+  friendly_name: "Living Room (Motion)"
+  hidden: true
+sensor.living_multi_temperature_2_1:
+  friendly_name: "Living Room (Temperature)"
+sensor.living_multi_relative_humidity_2_5:
+  friendly_name: "Living Room (Humidity)"
+  icon: mdi:water-percent
+sensor.living_multi_ultraviolet_2_27:
+  hidden: true
+sensor.living_multi_alarm_level_2_1:
+  hidden: true
+sensor.living_multi_alarm_type_2_0:
+  hidden: true
+sensor.living_multi_burglar_2_10:
+  hidden: true
+sensor.living_multi_sourcenodeid_2_2:
+  hidden: true
+# --------------------------------------------------
+
+# Kitchen (Multi Sensor) (Aeotec)
+# --------------------------------------------------
+binary_sensor.kitchen_multi_sensor_3_0:
+  friendly_name: "Kitchen (Motion)"
+  hidden: true
+sensor.kitchen_multi_temperature_3_1:
+  friendly_name: "Kitchen (Temperature)"
+sensor.kitchen_multi_relative_humidity_3_5:
+  friendly_name: "Kitchen (Humidity)"
+  icon: mdi:water-percent
+sensor.kitchen_multi_ultraviolet_3_27:
+  hidden: true
+sensor.kitchen_multi_alarm_level_3_1:
+  hidden: true
+sensor.kitchen_multi_alarm_type_3_0:
+  hidden: true
+sensor.kitchen_multi_burglar_3_10:
+  hidden: true
+sensor.kitchen_multi_sourcenodeid_3_2:
+  hidden: true
+# --------------------------------------------------
+
+# Master Bedroom (Multi Sensor) (Aeotec)
+# --------------------------------------------------
+binary_sensor.master_multi_sensor_4_0:
+  friendly_name: "Master Bedroom (Motion)"
+  hidden: true
+sensor.master_multi_temperature_4_1:
+  friendly_name: "Master Bedroom (Temperature)"
+sensor.master_multi_relative_humidity_4_5:
+  friendly_name: "Master Bedroom (Humidity)"
+  icon: mdi:water-percent
+sensor.master_multi_ultraviolet_4_27:
+  hidden: true
+sensor.master_multi_alarm_level_4_1:
+  hidden: true
+sensor.master_multi_alarm_type_4_0:
+  hidden: true
+sensor.master_multi_burglar_4_10:
+  hidden: true
+sensor.master_multi_sourcenodeid_4_2:
+  hidden: true
+# --------------------------------------------------
+
+# Juliet's Bedroom (Multi Sensor) (Aeotec)
+# --------------------------------------------------
+binary_sensor.juliets_multi_sensor_5_0:
+  friendly_name: "Juliette's Bedroom (Motion)"
+  hidden: true
+sensor.juliets_multi_temperature_5_1:
+  friendly_name: "Juliette's Bedroom (Temperature)"
+sensor.juliets_multi_relative_humidity_5_5:
+  friendly_name: "Juliette's Bedroom (Humidity)"
+  icon: mdi:water-percent
+sensor.juliets_multi_ultraviolet_5_27:
+  hidden: true
+sensor.juliets_multi_alarm_level_5_1:
+  hidden: true
+sensor.juliets_multi_alarm_type_5_0:
+  hidden: true
+sensor.juliets_multi_burglar_5_10:
+  hidden: true
+sensor.juliets_multi_sourcenodeid_5_2:
+  hidden: true
+# --------------------------------------------------
+
+# ==============================
+
+# Motion Sensors (Ecolink)
+# ==============================
+binary_sensor.master_bathroom_motion_sensor_6_0: # Master Bathroom (Motion)
+  friendly_name: "Master Bathroom (Motion)"
+sensor.master_bathroom_motion_alarm_level_6_1:
+  hidden: true
+sensor.master_bathroom_motion_alarm_type_6_0:
+  hidden: true
+sensor.master_bathroom_motion_burglar_6_10:
+  hidden: true
+sensor.master_bathroom_motion_sourcenodeid_6_2:
+  hidden: true
+
+binary_sensor.guest_bathroom_motion_sensor_7_0: # Guest Bathroom (Motion)
+  friendly_name: "Guest Bathroom (Motion)"
+sensor.guest_bathroom_motion_alarm_level_7_1:
+  hidden: true
+sensor.guest_bathroom_motion_alarm_type_7_0:
+  hidden: true
+sensor.guest_bathroom_motion_burglar_7_10:
+  hidden: true
+sensor.guest_bathroom_motion_sourcenodeid_7_2:
+  hidden: true
+# ==============================
+
+# Door Sensors (Ecolink)
+# ==============================
+binary_sensor.entry_door_sensor_8_0: # Entry (Open/Close)
+  friendly_name: "Entryway (Open/Close)"
+sensor.entry_door_alarm_level_8_1:
+  hidden: true
+sensor.entry_door_alarm_type_8_0:
+  hidden: true
+sensor.entry_door_burglar_8_10:
+  hidden: true
+sensor.entry_door_sourcenodeid_8_2:
+  hidden: true
+
+binary_sensor.storage_door_sensor_9_0: # Storage Room (Open/Close)
+  friendly_name: "Storage Room (Open/Close)"
+sensor.storage_door_alarm_level_9_1:
+  hidden: true
+sensor.storage_door_alarm_type_9_0:
+  hidden: true
+sensor.storage_door_burglar_9_10:
+  hidden: true
+sensor.storage_door_sourcenodeid_9_2:
+  hidden: true
+# ==============================
+
+# Switches & Plug (Belkin WeMo)
+# ==============================
 switch.front_door:
   friendly_name: "Entryway (Light Switch)"
-  haaska_hidden: true
 switch.storage_room:
   friendly_name: "Storage Room (Light Switch)"
-  haaska_hidden: true
-switch.kitchen_plug:
-  friendly_name: "Kitchen (Wall Outlet)"
-  haaska_hidden: true
 switch.kitchen_main:
   friendly_name: "Kitchen (Light Switch)"
-  haaska_hidden: true
 switch.kitchen_counter:
   friendly_name: "Kitchen Countertop (Light Switch)"
-  haaska_hidden: true
 switch.guest_bathroom:
   friendly_name: "Guest Bathroom (Light Switch)"
-  haaska_hidden: true
 switch.master_bathroom:
   friendly_name: "Master Bathroom (Light Switch)"
-  haaska_hidden: true
+switch.master_closet:
+  friendly_name: "Master Closet (Light Switch)"
+switch.juliettes_closet:
+  friendly_name: "Juliette's Closet (Light Switch)"
+switch.hallway:
+  friendly_name: "Hallway (Light Switch)"
+switch.christmas_tree:
+  friendly_name: "Christmas Tree (Plug)"
+# ==============================
 
-# Lights (Hue)
-# --------------------------------------------------
+# Lights (Phillips Hue)
+# ==============================
 light.dining_room_1:
   friendly_name: "Dining Room (Light Bulb - #1)"
-  haaska_hidden: true
 light.dining_room_2:
   friendly_name: "Dining Room (Light Bulb - #2)"
-  haaska_hidden: true
 light.dining_room_3:
   friendly_name: "Dining Room (Light Bulb - #3)"
-  haaska_hidden: true
 light.dining_room_4:
   friendly_name: "Dining Room (Light Bulb - #4)"
-  haaska_hidden: true
 light.living_room_right:
-  friendly_name: "Living Room (Light Bulb - Right)"
-  haaska_hidden: true
-light.living_room_left:
   friendly_name: "Living Room (Light Bulb - Left)"
-  haaska_hidden: true
+light.living_room_left:
+  friendly_name: "Living Room (Light Bulb - Right)"
 light.dustins_lamp:
   friendly_name: "Dustin's Lamp (Light Bulb)"
-  haaska_hidden: true
+  emulated_hue: true
 light.macarenas_lamp:
   friendly_name: "Macarena's Lamp (Light Bulb)"
-  haaska_hidden: true
+  emulated_hue: true
 light.juliets_lamp:
-  friendly_name: "Juliet's Lamp (Light Bulb)"
-  haaska_hidden: true
+  friendly_name: "Juliette's Lamp (Light Bulb)"
+light.balcony:
+  friendly_name: "Balcony (Light Bulb)"
+# ==============================
+
+# Emulated Hue Lights
+# ==============================
+group.all_devices: # Except Master Bedroom
+  friendly_name: "All Devices"
+  emulated_hue: true
+  hidden: true
+group.bedroom_lights:
+  friendly_name: "Master Bedroom Lights"
+  emulated_hue: true
+  hidden: true
+# ==============================
 
 # Groups
-# --------------------------------------------------
-group.light_bulbs:
-  friendly_name: "Bulbs"
-  haaska_hidden: true
-group.light_switches:
-  friendly_name: "Switches"
-  haaska_hidden: true
-group.motion:
-  friendly_name: "Motion"
-  haaska_hidden: true
-group.doors:
-  friendly_name: "Doors"
-  haaska_hidden: true
-group.smoke_detector:
-  friendly_name: "Smoke Detector"
-  haaska_hidden: true
-group.humidity:
-  friendly_name: "Humidity"
-  haaska_hidden: true
-group.temperature:
-  friendly_name: "Temperature"
-  haaska_hidden: true
-group.luminance:
-  friendly_name: "Luminance"
-  haaska_hidden: true
+# ==============================
 group.weather:
-  friendly_name: "Temperature & Humidity"
-  haaska_hidden: true
+  friendly_name: "Weather"
+group.apartment:
+  friendly_name: "Apartment"
+group.entry_storage:
+  friendly_name: "Entryway & Storage"
 group.living_room:
   friendly_name: "Living Room"
-  haaska_hidden: true
 group.kitchen:
   friendly_name: "Kitchen & Dining"
-  haaska_hidden: true
 group.master_bedroom:
   friendly_name: "Master Bed & Bath"
-  haaska_hidden: true
 group.juliets_bedroom:
-  friendly_name: "Juliet's Bedroom"
-  haaska_hidden: true
-group.guest_bathroom:
-  friendly_name: "Guest Bathroom"
-  haaska_hidden: true
-group.entryway:
-  friendly_name: "Entryway & Hallway"
-  haaska_hidden: true
-group.storage_room:
-  friendly_name: "Storage Room"
-  haaska_hidden: true
-group.hallway:
-  friendly_name: "Hallway"
-  haaska_hidden: true
+  friendly_name: "Juliette's Bedroom"
 group.dining_room:
-  friendly_name: "Dining Room"
-  haaska_hidden: true
-group.all_devices:
-  haaska_hidden: true
-group.all_lights:
-  haaska_hidden: true
-group.all_switches:
-  haaska_hidden: true
-group.default_view:
-  haaska_hidden: true
-group.bedrooms:
-  haaska_hidden: true
-group.lights:
-  haaska_hidden: true
-group.sensors:
-  haaska_hidden: true
-
-# Hide scripts
-# --------------------------------------------------
-script.timed_front_light:
-  haaska_hidden: true
-script.timed_front_light_off:
-  haaska_hidden: true
+  friendly_name: "Dining Room (Light Bulbs)"
+group.light_bulbs:
+  friendly_name: "Bulbs"
+group.light_switches:
+  friendly_name: "Switches"
+group.motion:
+  friendly_name: "Motion"
+group.doors:
+  friendly_name: "Doors"
+group.smoke_detector:
+  friendly_name: "Smoke Detector"
+group.temperature:
+  friendly_name: "Temperature"
+group.humidity:
+  friendly_name: "Humidity"
+# ==============================

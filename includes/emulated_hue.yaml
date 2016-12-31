@@ -1,0 +1,7 @@
+#########################
+# Emulated Hue
+#########################
+
+type: alexa
+host_ip: !secret lan_ip
+expose_by_default: false

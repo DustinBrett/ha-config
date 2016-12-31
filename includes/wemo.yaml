@@ -3,10 +3,13 @@
 #########################
 
 static:
-  - 10.0.0.5  # Guest Bathroom
-  - 10.0.0.6  # Storage Room
-  - 10.0.0.9  # Master Bathroom
-  - 10.0.0.10 # Kitchen Main
-  - 10.0.0.13 # Kitchen Plug
-  - 10.0.0.16 # Kitchen Counter
-  - 10.0.0.18 # Front Door
+  - !secret guest_bathroom
+  - !secret storage_room
+  - !secret master_bathroom
+  - !secret kitchen_main
+  - !secret wemo_plug
+  - !secret kitchen_counter
+  - !secret front_door
+  - !secret hallway
+  - !secret master_closet
+  - !secret juliettes_closet

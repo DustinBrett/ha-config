@@ -1,0 +1,13 @@
+#########################
+# Remote
+#########################
+
+- platform: harmony
+  name: Living Room Hub
+  host: !secret living_hub_ip
+  activity: !secret main_activity
+
+- platform: harmony
+  name: Master Bedroom Hub
+  host: !secret bedroom_hub_ip
+  activity: !secret main_activity

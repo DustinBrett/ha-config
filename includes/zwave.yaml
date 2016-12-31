@@ -2,6 +2,6 @@
 # Z-Wave
 #########################
 
-usb_path: !env_var ZWAVE
-config_path: !env_var ZWAVE_CONF
-polling_interval: 30000
+usb_path: !secret usb_path
+config_path: !secret config_path
+polling_interval: !secret polling_interval

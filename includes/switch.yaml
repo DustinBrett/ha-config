@@ -1,0 +1,28 @@
+#########################
+# Switches
+#########################
+
+# Belkin WeMo
+- platform: wemo
+
+# Template
+- platform: template
+  switches:
+  
+    living_tv: # Harmony Hub (Living Room)
+      value_template: "{{ (states.remote.living_room_hub.state if states.remote.living_room_hub.state != 'none' else 'off') }}"
+      turn_on:
+        service: remote.turn_on
+        entity_id: remote.living_room_hub
+      turn_off:
+        service: remote.turn_off
+        entity_id: remote.living_room_hub
+        
+    master_bedroom_tv: # Harmony Hub (Master Bedroom)
+      value_template: "{{ (states.remote.master_bedroom_hub.state if states.remote.master_bedroom_hub.state != 'none' else 'off') }}"
+      turn_on:
+        service: remote.turn_on
+        entity_id: remote.master_bedroom_hub
+      turn_off:
+        service: remote.turn_off
+        entity_id: remote.master_bedroom_hub

@@ -1,0 +1,205 @@
+#########################
+# Groups
+#########################
+
+# Home
+# ==============================
+default_view:
+  entities:
+    #- device_tracker.dustin
+    #- device_tracker.macarena
+    - group.weather
+    - group.apartment
+    - group.entry_storage
+    - group.living_room
+    - group.kitchen
+    - group.master_bedroom
+    - group.juliets_bedroom
+# ==============================
+
+# Views
+# ==============================
+bedrooms:
+  view: yes
+  icon: mdi:hotel
+  entities:
+    - group.master_bedroom
+    - group.juliets_bedroom
+
+lights:
+  view: yes
+  icon: mdi:lightbulb
+  entities:
+    - group.light_bulbs
+    - group.light_switches
+
+sensors:
+  view: yes
+  icon: mdi:gauge
+  entities:
+    - group.motion
+    - group.doors
+    - group.smoke_detector
+    - group.temperature
+    - group.humidity
+# ==============================
+
+# View Groups
+# ==============================
+
+# Default
+# ----------------------------------------
+weather: # Weather
+  entities:
+    - sensor.temperature
+    - sensor.humidity
+    - sun.sun
+
+apartment:
+  entities:
+    - sensor.smoke_detector
+    - binary_sensor.guest_bathroom_motion_sensor_7_0
+    - switch.guest_bathroom
+    - group.dining_room
+    - switch.hallway
+    - light.balcony
+
+entry_storage:
+  entities:
+    - binary_sensor.entry_door_sensor_8_0
+    - switch.front_door
+    - binary_sensor.storage_door_sensor_9_0
+    - switch.storage_room
+
+living_room:
+  entities:
+    - sensor.living_multi_temperature_2_1
+    - sensor.living_multi_relative_humidity_2_5
+    - light.living_room_right
+    - light.living_room_left
+    - input_select.living_room_scene
+    - switch.living_tv
+    - switch.christmas_tree
+
+kitchen:
+  entities:
+    - sensor.kitchen_multi_temperature_3_1
+    - sensor.kitchen_multi_relative_humidity_3_5
+    - switch.kitchen_main
+    - switch.kitchen_counter
+
+master_bedroom: # Bedroom
+  entities:
+    - binary_sensor.master_bathroom_motion_sensor_6_0
+    - sensor.master_multi_temperature_4_1
+    - sensor.master_multi_relative_humidity_4_5
+    - light.dustins_lamp
+    - light.macarenas_lamp
+    - input_select.master_bedroom_scene
+    - switch.master_closet
+    - switch.master_bathroom
+    - switch.master_bedroom_tv
+
+juliets_bedroom: # Bedroom
+  entities:
+    - sensor.juliets_multi_temperature_5_1
+    - sensor.juliets_multi_relative_humidity_5_5
+    - light.juliets_lamp
+    - switch.juliettes_closet
+# ----------------------------------------
+
+# Lights
+# ----------------------------------------
+dining_room:
+  entities:
+    - light.dining_room_1
+    - light.dining_room_2
+    - light.dining_room_3
+    - light.dining_room_4
+
+light_bulbs: # 10 Light Bulbs
+  entities:
+    - group.dining_room
+    - light.dustins_lamp
+    - light.macarenas_lamp
+    - light.juliets_lamp
+    - light.living_room_right
+    - light.living_room_left
+    - light.balcony
+
+light_switches: # 9 Light Switches / 1 Plug
+  entities:
+    - switch.front_door
+    - switch.storage_room
+    - switch.kitchen_main
+    - switch.kitchen_counter
+    - switch.guest_bathroom
+    - switch.master_bathroom
+    - switch.master_closet
+    - switch.juliettes_closet
+    - switch.hallway
+    - switch.christmas_tree
+# ----------------------------------------
+
+# Sensors
+# ----------------------------------------
+motion: # 2 Active Motion Detectors (4 Inactive)
+  entities:
+    - binary_sensor.master_bathroom_motion_sensor_6_0
+    - binary_sensor.guest_bathroom_motion_sensor_7_0
+
+doors: # 2 Door Sensors
+  entities:
+    - binary_sensor.entry_door_sensor_8_0
+    - binary_sensor.storage_door_sensor_9_0
+
+smoke_detector: # CO2 & Smoke Sensors
+  entities:
+    - sensor.hallway_nest_protect_co_status
+    - sensor.hallway_nest_protect_smoke_status
+
+temperature: # 4 Temperature Sensors
+  entities:
+    - sensor.avg_temperature
+    - sensor.living_multi_temperature_2_1
+    - sensor.kitchen_multi_temperature_3_1
+    - sensor.master_multi_temperature_4_1
+    - sensor.juliets_multi_temperature_5_1
+
+humidity: # 4 Humidity Sensors
+  entities:
+    - sensor.avg_humidity
+    - sensor.living_multi_relative_humidity_2_5
+    - sensor.kitchen_multi_relative_humidity_3_5
+    - sensor.master_multi_relative_humidity_4_5
+    - sensor.juliets_multi_relative_humidity_5_5
+# ----------------------------------------
+
+# ==============================
+
+# Emulated Hue Lights
+# ==============================
+all_devices: # Except Master Bedroom
+  entities:
+    - switch.front_door
+    - switch.storage_room
+    - switch.guest_bathroom
+    - group.dining_room
+    - switch.kitchen_main
+    - switch.kitchen_counter
+    - light.living_room_right
+    - light.living_room_left
+    - switch.living_tv
+    - switch.christmas_tree
+    - light.balcony
+    - light.juliets_lamp
+    - switch.juliettes_closet
+    - switch.hallway
+    - switch.master_closet
+    - switch.master_bathroom
+
+bedroom_lights:
+  entities:
+    - light.dustins_lamp
+    - light.macarenas_lamp
+# ==============================

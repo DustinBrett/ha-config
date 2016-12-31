@@ -2,42 +2,37 @@
 # Home Assistant
 #########################
 
-# --------------------------------------------------
 # Configuration
-# --------------------------------------------------
 homeassistant:
   name: Home
-  latitude: !env_var LATITUDE
-  longitude: !env_var LONGITUDE
-  temperature_unit: C
-  time_zone: !env_var TZ
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: !secret elevation
+  unit_system: metric
+  time_zone: !secret time_zone
   customize: !include includes/customize.yaml
 
-# --------------------------------------------------
-# Enables
-# --------------------------------------------------
+# Enable
 frontend:
 history:
-http:
-  api_password: !env_var HOME_PW
+logbook:
 recorder:
-  purge_days: 30
 sun:
-  elevation: 50
 
-# --------------------------------------------------
-# Includes
-# --------------------------------------------------
-automation: !include includes/automations.yaml
-device_tracker: !include includes/device_trackers.yaml
-group: !include includes/groups.yaml
-input_boolean: !include includes/booleans.yaml
-light: !include includes/hue.yaml
+# Include
+automation: !include includes/automation.yaml
+#device_tracker: !include includes/device_tracker.yaml
+emulated_hue: !include includes/emulated_hue.yaml
+group: !include includes/group.yaml
+http: !include includes/http.yaml
+input_select: !include includes/input_select.yaml
+light: !include includes/light.yaml
 nest: !include includes/nest.yaml
-scene: !include includes/scenes.yaml
-script: !include includes/scripts.yaml
-sensor: !include includes/sensors.yaml
-shell_command: !include includes/commands.yaml
-switch: !include includes/switches.yaml
+notify: !include includes/notify.yaml
+remote: !include includes/remote.yaml
+scene: !include includes/scene.yaml
+sensor: !include includes/sensor.yaml
+switch: !include includes/switch.yaml
 wemo: !include includes/wemo.yaml
+#zone: !include includes/zone.yaml
 zwave: !include includes/zwave.yaml

@@ -3,5 +3,5 @@
 #########################
 
 platform: hue
-host: !env_var HUE
+host: !secret hue_ip
 allow_unreachable: true

@@ -2,5 +2,5 @@
 # Nest
 #########################
 
-username: !env_var DUSTIN
-password: !env_var NEST_PW
+client_id: !secret client_id
+client_secret: !secret client_secret

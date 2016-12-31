@@ -1,0 +1,22 @@
+#########################
+# Input Select
+#########################
+
+living_room_scene:
+  name: 'Living Room (Scene)'
+  options:
+    - Rainbow
+    - White
+    - Relax
+  initial: White
+  icon: mdi:lightbulb-on
+
+master_bedroom_scene:
+  name: 'Master Bedroom (Scene)'
+  options:
+    - Rainbow
+    - White
+    - Bedtime
+    - Sexy Time
+  initial: White
+  icon: mdi:lightbulb-on

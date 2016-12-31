@@ -1,0 +1,58 @@
+#########################
+# Sensors
+#########################
+
+# Nest Protect
+- platform: nest
+  monitored_conditions:
+    - 'co_status'
+    - 'smoke_status'
+
+# Darksky
+- platform: darksky
+  api_key: !secret ds_api
+  monitored_conditions:
+    - temperature
+    - humidity
+  units: ca
+  update_inverval: !secret ds_update
+
+# Template
+- platform: template
+  sensors:
+
+    avg_temperature: # Average Temperature
+      unit_of_measurement: '°C'
+      value_template: '{{ float((float(states.sensor.living_multi_temperature_2_1.state if states.sensor.living_multi_temperature_2_1 != None else 0.0) + float(states.sensor.kitchen_multi_temperature_3_1.state if states.sensor.kitchen_multi_temperature_3_1 != None else 0.0) + float(states.sensor.master_multi_temperature_4_1.state if states.sensor.master_multi_temperature_4_1 != None else 0.0) + float(states.sensor.juliets_multi_temperature_5_1.state if states.sensor.juliets_multi_temperature_5_1 != None else 0.0)) / 4) | round(1) }}'
+      entity_id:
+        - sensor.living_multi_temperature_2_1
+        - sensor.kitchen_multi_temperature_3_1
+        - sensor.master_multi_temperature_4_1
+        - sensor.juliets_multi_temperature_5_1
+
+    avg_humidity: # Average Humidity
+      unit_of_measurement: '%'
+      value_template: '{{ float((float(states.sensor.living_multi_relative_humidity_2_5.state if states.sensor.living_multi_relative_humidity_2_5 != None else 0.0) + float(states.sensor.kitchen_multi_relative_humidity_3_5.state if states.sensor.kitchen_multi_relative_humidity_3_5 != None else 0.0) + float(states.sensor.master_multi_relative_humidity_4_5.state if states.sensor.master_multi_relative_humidity_4_5 != None else 0.0) + float(states.sensor.juliets_multi_relative_humidity_5_5.state if states.sensor.juliets_multi_relative_humidity_5_5 != None else 0.0)) / 4) | round(1) }}'
+      entity_id:
+        - sensor.living_multi_relative_humidity_2_5
+        - sensor.kitchen_multi_relative_humidity_3_5
+        - sensor.master_multi_relative_humidity_4_5
+        - sensor.juliets_multi_relative_humidity_5_5
+
+    smoke_detector: # CO2 & Smoke Detector
+      value_template: '{{ states.sensor.hallway_nest_protect_co_status.state ~ " / " ~ states.sensor.hallway_nest_protect_smoke_status.state }}'
+      entity_id:
+        - sensor.hallway_nest_protect_co_status
+        - sensor.hallway_nest_protect_smoke_status
+
+    temperature: # Indoor & Outdoor Temperature
+      value_template: '{{ states.sensor.avg_temperature.state ~ " °C / " ~ states.sensor.dark_sky_temperature.state ~ " °C" }}'
+      entity_id:
+        - sensor.avg_temperature
+        - sensor.dark_sky_temperature
+
+    humidity: # Indoor & Outdoor Humidity
+      value_template: '{{ states.sensor.avg_humidity.state ~ " % / " ~ states.sensor.dark_sky_humidity.state ~ " %" }}'
+      entity_id:
+        - sensor.avg_humidity
+        - sensor.dark_sky_humidity

@@ -1,0 +1,65 @@
+#########################
+# Scenes
+#########################
+
+- name: "Dining Room (Front Door Open)"
+  entities:
+      group.dining_room:
+        state: on
+        transition: 2
+        brightness: 255
+
+# Living Room
+# --------------------------------------------------
+- name: "Living Room (Rainbow)"
+  entities:
+    group.living_room:
+      state: on
+      effect: colorloop
+      brightness: 200
+
+- name: "Living Room (White)"
+  entities:
+    group.living_room:
+      state: on
+      color_name: white
+      brightness: 255
+
+- name: "Living Room (Relax)"
+  entities:
+    group.living_room:
+      state: on
+      xy_color: !secret relaxed_color
+      brightness: 144
+# --------------------------------------------------
+
+# Master Bedroom
+# --------------------------------------------------
+- name: "Master Bedroom (Rainbow)"
+  entities:
+    group.bedroom_lights:
+      state: on
+      effect: colorloop
+      brightness: 200
+
+- name: "Master Bedroom (White)"
+  entities:
+    group.bedroom_lights:
+      state: on
+      color_name: white
+      brightness: 255
+
+- name: "Master Bedroom (Bedtime)"
+  entities:
+    group.bedroom_lights:
+      state: on
+      xy_color: !secret relaxed_color
+      brightness: 1
+
+- name: "Master Bedroom (Sexy Time)"
+  entities:
+    group.bedroom_lights:
+      state: on
+      color_name: red
+      brightness: 1
+# --------------------------------------------------
