@@ -1,7 +1,8 @@
 #########################
-# Philips Hue
+# Lights
 #########################
 
+# Philips Hue
 platform: hue
 host: !secret hue_ip
 allow_unreachable: true
