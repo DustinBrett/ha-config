@@ -6,8 +6,8 @@
 # ==============================
 default_view:
   entities:
-    #- device_tracker.dustin
-    #- device_tracker.macarena
+    - device_tracker.android446e935fcb185cce
+    - device_tracker.iphonedmacarena
     - group.weather
     - group.apartment
     - group.entry_storage
@@ -60,7 +60,6 @@ apartment:
     - sensor.smoke_detector
     - binary_sensor.guest_bathroom_motion_sensor_7_0
     - switch.guest_bathroom
-    - group.dining_room
     - switch.hallway
     - light.balcony
 
@@ -70,6 +69,11 @@ entry_storage:
     - switch.front_door
     - binary_sensor.storage_door_sensor_9_0
     - switch.storage_room
+
+living_room_lights:
+  entities:
+    - light.living_room_right
+    - light.living_room_left
 
 living_room:
   entities:
@@ -85,6 +89,7 @@ kitchen:
   entities:
     - sensor.kitchen_multi_temperature_3_1
     - sensor.kitchen_multi_relative_humidity_3_5
+    - group.dining_room
     - switch.kitchen_main
     - switch.kitchen_counter
 
@@ -179,7 +184,7 @@ humidity: # 4 Humidity Sensors
 
 # Emulated Hue Lights
 # ==============================
-all_devices: # Except Master Bedroom
+bedtime:
   entities:
     - switch.front_door
     - switch.storage_room

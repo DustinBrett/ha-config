@@ -2,6 +2,17 @@
 # Automation
 #########################
 
+#- alias: "No Occupants Detected"
+#  trigger:
+#    platform: state
+#    entity_id: group.all_devices
+#    state: "not_home"
+#    for: # IF: Occupants gone for x minutes
+#      seconds: !secret gone_sec (300)
+#  action: # SET: Apartment Power Off
+#    service: homeassistant.turn_off
+#    entity_id: group.default_view
+
 # Notifications
 # ==============================
 - alias: "Sunset Detected"
@@ -14,6 +25,112 @@
       title: "Sunset Detected"
       message: "Home Assistant was notified of sunset."
       target: !secret dustin_cell
+# ==============================
+
+# Front Door
+# ==============================
+- alias: "Front Door Open"
+  trigger:
+    platform: state
+    entity_id: binary_sensor.entry_door_sensor_8_0
+    to: "on"
+  condition: # IF: Entryway door closed for x seconds (August Auto-Lock Timer)
+    condition: state
+    entity_id: binary_sensor.entry_door_sensor_8_0
+    state: "off"
+    for:
+      seconds: !secret august_auto_lock_sec
+  action: # SET: Entryway light on
+    - service: switch.turn_on
+      data:
+        entity_id: switch.front_door
+    - service: notify.html5
+      data: # NOTIFY: Dustin door open
+        title: "Front Door"
+        message: "The front door has been opened."
+        target: !secret dustin_cell
+
+- alias: "Front Door Closed"
+  trigger: # IF: Entryway door closed for x seconds (August Auto-Lock Timer)
+    platform: state
+    entity_id: binary_sensor.entry_door_sensor_8_0
+    from: "on"
+    to: "off"
+    for:
+      seconds: !secret august_auto_lock_sec
+  action: # SET: Entryway light on
+    - service: switch.turn_off
+      data:
+        entity_id: switch.front_door
+    - service: notify.html5
+      data: # NOTIFY: Dustin door closed
+        title: "Front Door"
+        message: "The front door has been closed."
+        target: !secret dustin_cell
+
+- alias: "Front Door Night"
+  trigger:
+    platform: state
+    entity_id: switch.front_door
+    to: "on"
+  condition:
+   - condition: and
+     conditions: # IF: Sunset occured & Dining room lights are off
+      - condition: state
+        entity_id: group.dining_room
+        state: "off"
+      - condition: sun
+        after: sunset
+  action: # SET: Dining room lights on (3 second fade)
+    service: scene.turn_on
+    entity_id: scene.dining_room_front_door_open
+# ==============================
+
+# Storage Room
+# ==============================
+- alias: "Storage Door Open"
+  trigger:
+    platform: state
+    entity_id: binary_sensor.storage_door_sensor_9_0
+    to: "on"
+  action: # SET: Storage light on
+    service: switch.turn_on
+    data:
+      entity_id: switch.storage_room
+
+- alias: "Storage Door Closed"
+  trigger:
+    platform: state
+    entity_id: binary_sensor.storage_door_sensor_9_0
+    to: "off"
+  action: # SET: Storage light off
+    service: switch.turn_off
+    data:
+      entity_id: switch.storage_room
+# ==============================
+
+# Kitchen
+# ==============================
+- alias: "Kitchen Countertop at Night"
+  trigger:
+    platform: sun
+    event: sunset
+  action: # SET: Kitchen countertop lights on
+    service: switch.turn_on
+    data:
+      entity_id: switch.kitchen_counter
+# ==============================
+
+# Christmas Tree
+# ==============================
+- alias: "Christmas Tree at Night"
+  trigger:
+    platform: sun
+    event: sunset
+  action: # SET: Christmas tree lights on
+    service: switch.turn_on
+    data:
+      entity_id: switch.christmas_tree
 # ==============================
 
 # Input Selects
@@ -90,125 +207,22 @@
 
 # ==============================
 
-# Apartment
-# ==============================
-#- alias: "No Occupants Detected"
-#  trigger:
-#    platform: state
-#    entity_id: group.all_devices
-#    state: "not_home"
-#    for: # IF: Occupants gone for 5 minutes
-#      seconds: 300
-#  action: # SET: Apartment Power Off
-#    service: homeassistant.turn_off
-#    entity_id: group.default_view
-
-- alias: "Front Door Open (Entryway light)"
-  condition: # IF: Entryway light is off
-    condition: state
-    entity_id: switch.front_door
-    state: "off"
-  trigger:
-    platform: state
-    entity_id: binary_sensor.entry_door_sensor_8_0
-    to: "on"
-  action: # SET: Entryway light on
-    - service: switch.turn_on
-      data:
-        entity_id: switch.front_door
-    - service: notify.html5
-      data: # NOTIFY: Dustin door open
-        title: "Front Door"
-        message: "The front door has been opened."
-        target: !secret dustin_cell
-
-- alias: "Front Door Open (Dining room light)"
-  condition:
-   - condition: and
-     conditions: # IF: Sunset occured & Dining room lights are off
-      - condition: state
-        entity_id: group.dining_room
-        state: "off"
-      - condition: sun
-        after: sunset
-  trigger:
-    platform: state
-    entity_id: binary_sensor.entry_door_sensor_8_0
-    to: "on"
-  action: # SET: Dining room lights on (2 second fade)
-    service: scene.turn_on
-    entity_id: scene.dining_room_front_door_open
-
-- alias: "Front Door Closed"
-  trigger:
-    platform: state
-    entity_id: binary_sensor.entry_door_sensor_8_0
-    from: "on"
-    to: "off"
-    for: # IF: Entryway door closed for x seconds (August Auto-Lock Timer)
-      seconds: !secret august_auto_lock_sec
-  action: # NOTIFY: Dustin door closed
-    - service: notify.html5
-      data:
-        title: "Front Door"
-        message: "The front door has been closed."
-        target: !secret dustin_cell
-    - service: switch.turn_off
-      data:
-        entity_id: switch.front_door
-# ==============================
-
-# Storage Room
-# ==============================
-- alias: "Storage Door Open"
-  trigger:
-    platform: state
-    entity_id: binary_sensor.storage_door_sensor_9_0
-    to: "on"
-  action: # SET: Storage light on
-    service: switch.turn_on
-    data:
-      entity_id: switch.storage_room
-
-- alias: "Storage Door Closed"
-  trigger:
-    platform: state
-    entity_id: binary_sensor.storage_door_sensor_9_0
-    to: "off"
-  action: # SET: Storage light off
-    service: switch.turn_off
-    data:
-      entity_id: switch.storage_room
-# ==============================
-
-# Kitchen
-# ==============================
-- alias: "Kitchen Countertop at Night"
-  trigger:
-    platform: sun
-    event: sunset
-  action: # SET: Kitchen countertop lights on
-    service: switch.turn_on
-    data:
-      entity_id: switch.kitchen_counter
-# ==============================
-
 # Bathrooms
 # ==============================
 
 # Master Bathroom
 # ------------------------------------------------------------
 - alias: "Master Bathroom Motion Detected"
+  trigger:
+    platform: state
+    entity_id: binary_sensor.master_bathroom_motion_sensor_6_0
+    to: "on"
   condition: # IF: Master bathroom lights are off
     condition: state
     entity_id: switch.master_bathroom
     state: "off"
     for: # IF: Lights off for x seconds
       seconds: !secret lights_off_sec
-  trigger:
-    platform: state
-    entity_id: binary_sensor.master_bathroom_motion_sensor_6_0
-    to: "on"
   action: # SET: Master bathroom lights on
     service: switch.turn_on
     data:
@@ -230,16 +244,16 @@
 # Guest Bathroom
 # ------------------------------------------------------------
 - alias: "Guest Bathroom Motion Detected"
+  trigger:
+    platform: state
+    entity_id: binary_sensor.guest_bathroom_motion_sensor_7_0
+    to: "on"
   condition: # IF: Guest bathroom lights are off
     condition: state
     entity_id: switch.guest_bathroom
     state: "off"
     for: # IF: Lights off for x seconds
       seconds: !secret lights_off_sec
-  trigger:
-    platform: state
-    entity_id: binary_sensor.guest_bathroom_motion_sensor_7_0
-    to: "on"
   action: # SET: Guest bathroom lights on
     service: switch.turn_on
     data:

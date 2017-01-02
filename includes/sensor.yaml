@@ -15,7 +15,7 @@
     - temperature
     - humidity
   units: ca
-  update_inverval: !secret ds_update
+  update_inverval: '00:01:30'
 
 # Template
 - platform: template

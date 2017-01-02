@@ -21,12 +21,13 @@ sun:
 
 # Include
 automation: !include includes/automation.yaml
-#device_tracker: !include includes/device_tracker.yaml
+device_tracker: !include includes/device_tracker.yaml
 emulated_hue: !include includes/emulated_hue.yaml
 group: !include includes/group.yaml
 http: !include includes/http.yaml
 input_select: !include includes/input_select.yaml
 light: !include includes/light.yaml
+mqtt: !include includes/mqtt.yaml
 nest: !include includes/nest.yaml
 notify: !include includes/notify.yaml
 remote: !include includes/remote.yaml
@@ -34,5 +35,5 @@ scene: !include includes/scene.yaml
 sensor: !include includes/sensor.yaml
 switch: !include includes/switch.yaml
 wemo: !include includes/wemo.yaml
-#zone: !include includes/zone.yaml
+zone: !include includes/zone.yaml
 zwave: !include includes/zwave.yaml

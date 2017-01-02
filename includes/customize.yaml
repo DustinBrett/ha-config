@@ -238,8 +238,8 @@ light.balcony:
 
 # Emulated Hue Lights
 # ==============================
-group.all_devices: # Except Master Bedroom
-  friendly_name: "All Devices"
+group.bedtime: # Except Master Bedroom
+  friendly_name: "Bedtime Lights"
   emulated_hue: true
   hidden: true
 group.bedroom_lights:
