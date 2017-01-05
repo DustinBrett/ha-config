@@ -6,8 +6,7 @@
 # ==============================
 default_view:
   entities:
-    - device_tracker.android446e935fcb185cce
-    - device_tracker.iphonedmacarena
+    - group.occupants
     - group.weather
     - group.apartment
     - group.entry_storage
@@ -49,7 +48,12 @@ sensors:
 
 # Default
 # ----------------------------------------
-weather: # Weather
+occupants:
+  entities:
+    - !secret dustin
+    - !secret macarena
+
+weather:
   entities:
     - sensor.temperature
     - sensor.humidity

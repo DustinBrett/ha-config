@@ -250,6 +250,8 @@ group.bedroom_lights:
 
 # Groups
 # ==============================
+group.occupants:
+  friendly_name: "Occupants"
 group.weather:
   friendly_name: "Weather"
 group.apartment:

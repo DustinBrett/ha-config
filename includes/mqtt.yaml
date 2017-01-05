@@ -1,0 +1,8 @@
+#########################
+# MQTT
+#########################
+
+broker: localhost
+protocol: 3.1
+username: !secret mqtt_cred
+password: !secret mqtt_cred

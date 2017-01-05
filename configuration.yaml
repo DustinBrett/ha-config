@@ -13,10 +13,13 @@ homeassistant:
   customize: !include includes/customize.yaml
 
 # Enable
+logger:
+  default: warn
+  logs:
+    homeassistant.components.automation: debug
+recorder:
 frontend:
 history:
-logbook:
-recorder:
 sun:
 
 # Include
@@ -25,6 +28,7 @@ device_tracker: !include includes/device_tracker.yaml
 emulated_hue: !include includes/emulated_hue.yaml
 group: !include includes/group.yaml
 http: !include includes/http.yaml
+input_boolean: !include includes/input_boolean.yaml
 input_select: !include includes/input_select.yaml
 light: !include includes/light.yaml
 mqtt: !include includes/mqtt.yaml

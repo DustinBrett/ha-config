@@ -1,0 +1,14 @@
+#########################
+# Device Trackers
+#########################
+
+- platform: owntracks
+  track_new_devices: yes
+
+- platform: netgear
+  host: !secret router_ip
+  username: !secret router_user
+  password: !secret router_pass
+  interval_seconds: 50
+  consider_home: 900
+  track_new_devices: no
