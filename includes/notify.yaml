@@ -2,8 +2,17 @@
 # Notify
 #########################
 
-# HTML5 Push
-- platform: html5
-  name: html5
-  gcm_api_key: !secret gcm_api_key
-  gcm_sender_id: !secret gcm_sender_id
+# Android TV
+- platform: nfandroidtv
+  name: 'Living Room'
+  host: 10.0.0.19
+
+#- platform: nfandroidtv
+#  name: 'Bedroom'
+#  host: 10.0.0.20
+
+- platform: group
+  name: TV
+  services:
+    - service: living_room
+    #- service: bedroom

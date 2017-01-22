@@ -3,5 +3,5 @@
 #########################
 
 type: alexa
-host_ip: !secret lan_ip
+host_ip: 10.0.0.3
 expose_by_default: false

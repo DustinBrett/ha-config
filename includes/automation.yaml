@@ -5,15 +5,15 @@
 # Front Door
 # ==============================
 - alias: "Front Door Open"
-  condition:
-    condition: state
-    entity_id: input_boolean.door_opened
-    state: "off"
   trigger:
     platform: state
     entity_id: binary_sensor.entry_door_sensor_8_0
     from: "off"
     to: "on"
+  condition:
+    condition: state
+    entity_id: input_boolean.door_opened
+    state: "off"
   action: # SET: Entryway light on
     - service: input_boolean.turn_on
       data:
@@ -21,11 +21,10 @@
     - service: switch.turn_on
       data:
         entity_id: switch.front_door
-    - service: notify.html5
-      data: # NOTIFY: Dustin door open
+    - service: notify.tv
+      data: # NOTIFY: Android TV's: Door open
         title: "Front Door"
         message: "The front door has been opened."
-        target: !secret dustin_cell
 
 - alias: "Front Door Closed"
   trigger: # IF: Entryway door closed for x seconds (August Auto-Lock Timer)
@@ -42,28 +41,10 @@
     - service: switch.turn_off
       data:
         entity_id: switch.front_door
-    - service: notify.html5
-      data: # NOTIFY: Dustin door closed
+    - service: notify.tv
+      data: # NOTIFY: Android TV's: Door closed
         title: "Front Door"
         message: "The front door has been closed."
-        target: !secret dustin_cell
-
-- alias: "Front Door Night"
-  trigger:
-    platform: state
-    entity_id: input_boolean.door_opened
-    to: "on"
-  condition:
-   - condition: and
-     conditions: # IF: Sunset occured & Dining room lights are off
-      - condition: state
-        entity_id: group.dining_room
-        state: "off"
-      - condition: sun
-        before: sunset
-  action: # SET: Dining room lights on (x second fade)
-    service: scene.turn_on
-    entity_id: scene.dining_room_front_door_open
 # ==============================
 
 # Storage Room
@@ -72,6 +53,7 @@
   trigger:
     platform: state
     entity_id: binary_sensor.storage_door_sensor_9_0
+    from: "off"
     to: "on"
   action: # SET: Storage light on
     service: switch.turn_on
@@ -82,6 +64,7 @@
   trigger:
     platform: state
     entity_id: binary_sensor.storage_door_sensor_9_0
+    from: "on"
     to: "off"
   action: # SET: Storage light off
     service: switch.turn_off
@@ -184,6 +167,7 @@
   trigger:
     platform: state
     entity_id: binary_sensor.master_bathroom_motion_sensor_6_0
+    from: "off"
     to: "on"
   condition: # IF: Master bathroom lights are off
     condition: state
@@ -200,6 +184,7 @@
   trigger:
     platform: state
     entity_id: binary_sensor.master_bathroom_motion_sensor_6_0
+    from: "on"
     to: "off"
     for: # IF: No motion detected for x minutes
       minutes: !secret no_motion_min
@@ -215,6 +200,7 @@
   trigger:
     platform: state
     entity_id: binary_sensor.guest_bathroom_motion_sensor_7_0
+    from: "off"
     to: "on"
   condition: # IF: Guest bathroom lights are off
     condition: state
@@ -231,6 +217,7 @@
   trigger:
     platform: state
     entity_id: binary_sensor.guest_bathroom_motion_sensor_7_0
+    from: "on"
     to: "off"
     for: # IF: No motion detected for x minutes
       minutes: !secret no_motion_min

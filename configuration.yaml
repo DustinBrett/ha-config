@@ -13,10 +13,8 @@ homeassistant:
   customize: !include includes/customize.yaml
 
 # Enable
-logger:
-  default: warn
-  logs:
-    homeassistant.components.automation: debug
+logger: # debug
+  default: warning
 recorder:
 frontend:
 history:
@@ -31,7 +29,6 @@ http: !include includes/http.yaml
 input_boolean: !include includes/input_boolean.yaml
 input_select: !include includes/input_select.yaml
 light: !include includes/light.yaml
-mqtt: !include includes/mqtt.yaml
 nest: !include includes/nest.yaml
 notify: !include includes/notify.yaml
 remote: !include includes/remote.yaml
@@ -39,5 +36,4 @@ scene: !include includes/scene.yaml
 sensor: !include includes/sensor.yaml
 switch: !include includes/switch.yaml
 wemo: !include includes/wemo.yaml
-zone: !include includes/zone.yaml
 zwave: !include includes/zwave.yaml

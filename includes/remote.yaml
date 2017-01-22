@@ -4,10 +4,10 @@
 
 - platform: harmony
   name: Living Room Hub
-  host: !secret living_hub_ip
+  host: 10.0.0.25
   activity: !secret main_activity
 
 - platform: harmony
   name: Master Bedroom Hub
-  host: !secret bedroom_hub_ip
+  host: 10.0.0.8
   activity: !secret main_activity

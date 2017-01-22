@@ -10,12 +10,14 @@ sensor.avg_temperature:
 sensor.avg_humidity:
   friendly_name: "Average Humidity (%)"
   icon: mdi:water-percent
+  sensor_class: moisture
 sensor.temperature:
   friendly_name: "Temperature (In / Out)"
   icon: mdi:thermometer
 sensor.humidity:
   friendly_name: "Humidity (In / Out)"
   icon: mdi:water-percent
+  sensor_class: moisture
 # ==============================
 
 # Hallway (Nest Protect)
@@ -36,11 +38,10 @@ sensor.hallway_nest_protect_smoke_status:
 switch.living_tv:
   friendly_name: "Living Room (TV)"
   icon: mdi:television
-  emulated_hue: true
 switch.master_bedroom_tv:
   friendly_name: "Master Bedroom (TV)"
-  icon: mdi:television
   emulated_hue: true
+  icon: mdi:television
 # ==============================
 
 # Multi Sensors (Aeotec)
@@ -50,12 +51,14 @@ switch.master_bedroom_tv:
 # --------------------------------------------------
 binary_sensor.living_multi_sensor_2_0:
   friendly_name: "Living Room (Motion)"
+  sensor_class: motion
   hidden: true
 sensor.living_multi_temperature_2_1:
   friendly_name: "Living Room (Temperature)"
 sensor.living_multi_relative_humidity_2_5:
   friendly_name: "Living Room (Humidity)"
   icon: mdi:water-percent
+  sensor_class: moisture
 sensor.living_multi_ultraviolet_2_27:
   hidden: true
 sensor.living_multi_alarm_level_2_1:
@@ -72,12 +75,14 @@ sensor.living_multi_sourcenodeid_2_2:
 # --------------------------------------------------
 binary_sensor.kitchen_multi_sensor_3_0:
   friendly_name: "Kitchen (Motion)"
+  sensor_class: motion
   hidden: true
 sensor.kitchen_multi_temperature_3_1:
   friendly_name: "Kitchen (Temperature)"
 sensor.kitchen_multi_relative_humidity_3_5:
   friendly_name: "Kitchen (Humidity)"
   icon: mdi:water-percent
+  sensor_class: moisture
 sensor.kitchen_multi_ultraviolet_3_27:
   hidden: true
 sensor.kitchen_multi_alarm_level_3_1:
@@ -94,12 +99,14 @@ sensor.kitchen_multi_sourcenodeid_3_2:
 # --------------------------------------------------
 binary_sensor.master_multi_sensor_4_0:
   friendly_name: "Master Bedroom (Motion)"
+  sensor_class: motion
   hidden: true
 sensor.master_multi_temperature_4_1:
   friendly_name: "Master Bedroom (Temperature)"
 sensor.master_multi_relative_humidity_4_5:
   friendly_name: "Master Bedroom (Humidity)"
   icon: mdi:water-percent
+  sensor_class: moisture
 sensor.master_multi_ultraviolet_4_27:
   hidden: true
 sensor.master_multi_alarm_level_4_1:
@@ -116,12 +123,14 @@ sensor.master_multi_sourcenodeid_4_2:
 # --------------------------------------------------
 binary_sensor.juliets_multi_sensor_5_0:
   friendly_name: "Juliette's Bedroom (Motion)"
+  sensor_class: motion
   hidden: true
 sensor.juliets_multi_temperature_5_1:
   friendly_name: "Juliette's Bedroom (Temperature)"
 sensor.juliets_multi_relative_humidity_5_5:
   friendly_name: "Juliette's Bedroom (Humidity)"
   icon: mdi:water-percent
+  sensor_class: moisture
 sensor.juliets_multi_ultraviolet_5_27:
   hidden: true
 sensor.juliets_multi_alarm_level_5_1:
@@ -140,6 +149,7 @@ sensor.juliets_multi_sourcenodeid_5_2:
 # ==============================
 binary_sensor.master_bathroom_motion_sensor_6_0: # Master Bathroom (Motion)
   friendly_name: "Master Bathroom (Motion)"
+  sensor_class: motion
 sensor.master_bathroom_motion_alarm_level_6_1:
   hidden: true
 sensor.master_bathroom_motion_alarm_type_6_0:
@@ -151,6 +161,7 @@ sensor.master_bathroom_motion_sourcenodeid_6_2:
 
 binary_sensor.guest_bathroom_motion_sensor_7_0: # Guest Bathroom (Motion)
   friendly_name: "Guest Bathroom (Motion)"
+  sensor_class: motion
 sensor.guest_bathroom_motion_alarm_level_7_1:
   hidden: true
 sensor.guest_bathroom_motion_alarm_type_7_0:
@@ -165,6 +176,7 @@ sensor.guest_bathroom_motion_sourcenodeid_7_2:
 # ==============================
 binary_sensor.entry_door_sensor_8_0: # Entry (Open/Close)
   friendly_name: "Entryway (Open/Close)"
+  sensor_class: opening
 sensor.entry_door_alarm_level_8_1:
   hidden: true
 sensor.entry_door_alarm_type_8_0:
@@ -176,6 +188,7 @@ sensor.entry_door_sourcenodeid_8_2:
 
 binary_sensor.storage_door_sensor_9_0: # Storage Room (Open/Close)
   friendly_name: "Storage Room (Open/Close)"
+  sensor_class: opening
 sensor.storage_door_alarm_level_9_1:
   hidden: true
 sensor.storage_door_alarm_type_9_0:
@@ -206,8 +219,8 @@ switch.juliettes_closet:
   friendly_name: "Juliette's Closet (Light Switch)"
 switch.hallway:
   friendly_name: "Hallway (Light Switch)"
-switch.christmas_tree:
-  friendly_name: "Christmas Tree (Plug)"
+switch.wemo_plug:
+  friendly_name: "Wemo Switch (Wall Plug)"
 # ==============================
 
 # Lights (Phillips Hue)
@@ -282,4 +295,33 @@ group.temperature:
   friendly_name: "Temperature"
 group.humidity:
   friendly_name: "Humidity"
+group.phones:
+  friendly_name: "Phones"
+group.trackers:
+  friendly_name: "Trackers"
+# ==============================
+
+# Device Trackers
+# ==============================
+group.dustin:
+  friendly_name: "Dustin"
+  entity_picture: !secret dustin_pic
+group.macarena:
+  friendly_name: "Macarena"
+  entity_picture: !secret macarena_pic
+device_tracker.android446e935fcb185cce:
+  friendly_name: "Samsung Galaxy S6"
+  icon: mdi:cellphone-iphone
+device_tracker.iphonedmacarena:
+  friendly_name: "iPhone 6 Plus"
+  icon: mdi:cellphone-iphone
+device_tracker.black:
+  friendly_name: "Dustin's Keys"
+  icon: mdi:key-variant
+device_tracker.gold:
+  friendly_name: "Macarena's Keys"
+  icon: mdi:key-variant
+device_tracker.blue:
+  friendly_name: "Juliette's Stroller"
+  icon: mdi:baby-buggy
 # ==============================

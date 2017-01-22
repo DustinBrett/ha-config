@@ -5,18 +5,20 @@
 living_room_scene:
   name: 'Living Room (Scene)'
   options:
+    - Manual
     - Rainbow
     - White
     - Relax
-  initial: White
+  initial: Manual
   icon: mdi:lightbulb-on
 
 master_bedroom_scene:
   name: 'Master Bedroom (Scene)'
   options:
+    - Manual
     - Rainbow
     - White
     - Bedtime
     - Sexy Time
-  initial: White
+  initial: Manual
   icon: mdi:lightbulb-on

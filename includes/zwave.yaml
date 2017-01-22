@@ -4,4 +4,5 @@
 
 usb_path: !secret usb_path
 config_path: !secret config_path
-polling_interval: 60000
+polling_interval: 30000
+debug: False

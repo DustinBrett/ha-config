@@ -4,5 +4,5 @@
 
 # Philips Hue
 platform: hue
-host: !secret hue_ip
+host: 10.0.0.2
 allow_unreachable: true

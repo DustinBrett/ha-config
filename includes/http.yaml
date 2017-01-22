@@ -2,7 +2,4 @@
 # HTTP
 #########################
 
-base_url: !secret base_url
 api_password: !secret api_password
-ssl_certificate: !secret ssl_certificate
-ssl_key: !secret ssl_key

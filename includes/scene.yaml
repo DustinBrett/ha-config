@@ -6,8 +6,8 @@
   entities:
       group.dining_room:
         state: on
-        transition: 3
-        brightness: 255
+        transition: 5
+        brightness: 200
 
 # Living Room
 # --------------------------------------------------
